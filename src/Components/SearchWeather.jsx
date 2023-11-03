@@ -40,7 +40,7 @@ function SearchWeather() {
           onChange={(event) => setSearchValue(event.target.value)}
         />
       </Form.Group>
-      {searchData.length > 1 && <CardWeather latandlong={searchData[0]} />}
+      {searchData.length > 0 && <CardWeather latandlong={searchData[0]} />}
     </Container>
   );
 }

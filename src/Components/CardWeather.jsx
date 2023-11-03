@@ -19,7 +19,7 @@ function CardWeather(props) {
           setLoading(false);
           let resp = await fetch(
             // `https://api.openweathermap.org/data/2.5/weather?lat=41.7089&lon=12.6866&appid=a7f97bb8f115716e1864b7863ebc45a7`
-            `https://api.openweathermap.org/data/2.5/weather?lat=${props.latandlong.lat}&lon=${props.latandlong.lon}&appid=a7f97bb8f115716e1864b7863ebc45a7`
+            `https://api.openweathermap.org/data/2.5/weather?lat=${props.latandlong.lat}&lon=${props.latandlong.lon}&appid=a7f97bb8f115716e1864b7863ebc45a7&units=metric`
           );
           if (resp.ok) {
             let data = await resp.json();
@@ -46,17 +46,6 @@ function CardWeather(props) {
         <Col>
           <Card>
             {/* INIZIO DROP */}
-            <DropdownButton
-              id="dropdown-basic-button"
-              title="Weather Info"
-              variant="info"
-              className="p-2"
-            >
-              <Dropdown.Item className=" fst-italic">Londra</Dropdown.Item>
-              <Dropdown.Item className=" fst-italic">Roma</Dropdown.Item>
-              <Dropdown.Item className=" fst-italic">Parigi</Dropdown.Item>
-              <Dropdown.Item className=" fst-italic">New York</Dropdown.Item>
-            </DropdownButton>
 
             {/* DROPDOWN PER LA SCELTA CORDINATE */}
             {/* CARD con weather */}
@@ -64,16 +53,22 @@ function CardWeather(props) {
             {/* Se è loading spinner */}
             {loading ? (
               <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
+                <span className="visually-hidden"></span>
               </Spinner>
             ) : // Senno stampa weather data
             weatherData ? (
               <div>
-                <Card.Img variant="top" src="holder.js/100px180" />
-                <Card.Body>
-                  <Card.Title>{weatherData.name}</Card.Title>
-                  <Card.Title>{weatherData.weather[0].description}</Card.Title>
-                  <Card.Text>{weatherData.weather[0].main}</Card.Text>
+                <Card.Body className="bg-info-subtle text-start">
+                  <Card.Title className="bg-primary-subtle fs-3 ">
+                    {weatherData.name}
+                  </Card.Title>
+                  <Card.Text>
+                    {weatherData.weather[0].main}{" "}
+                    {weatherData.weather[0].description}
+                  </Card.Text>
+
+                  <Card.Text>{weatherData.main.temp}</Card.Text>
+                  <Card.Text>{weatherData.main.temp}</Card.Text>
                 </Card.Body>
               </div>
             ) : null}
