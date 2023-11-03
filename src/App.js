@@ -1,14 +1,14 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import WeatherNav from "./Components/WeatherNav";
-import MainCard from "./Components/MainCard";
 import WeatherFooter from "./Components/WeatherFooter";
+import SearchWeather from "./Components/SearchWeather";
 
 function App() {
   return (
     <div className="App h-100 flex-grow-1">
       <WeatherNav />
-      <MainCard />
+      <SearchWeather />
       <WeatherFooter />
     </div>
   );
