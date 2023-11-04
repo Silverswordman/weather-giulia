@@ -34,10 +34,10 @@ function SearchWeather() {
   return (
     <Container className="d-flex flex-column flex-grow-1">
       <Row className="justify-content-center">
-        <Col lg={6}>
+        <Col xs={12} sm={12} md={8} lg={6}>
           <Form.Group>
             <Form.Control
-              className=" p-1 fs-5 mt-4 "
+              className=" p-1 fs-5 mt-1 "
               type="search"
               placeholder="Will you have to take the umbrella? or the sunscreen?"
               value={searchValue}

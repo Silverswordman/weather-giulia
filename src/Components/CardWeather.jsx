@@ -1,7 +1,6 @@
 import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useEffect } from "react";
@@ -10,13 +9,13 @@ import Spinner from "react-bootstrap/Spinner";
 
 function CardWeather(props) {
   const [weatherData, setWeather] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchWeather = async () => {
       try {
         if (props.latandlong) {
-          setLoading(false);
+          setLoading(true);
           let resp = await fetch(
             // `https://api.openweathermap.org/data/2.5/weather?lat=41.7089&lon=12.6866&appid=a7f97bb8f115716e1864b7863ebc45a7`
             `https://api.openweathermap.org/data/2.5/weather?lat=${props.latandlong.lat}&lon=${props.latandlong.lon}&appid=a7f97bb8f115716e1864b7863ebc45a7&units=metric`
@@ -25,6 +24,7 @@ function CardWeather(props) {
             let data = await resp.json();
             console.log(data);
             setWeather(data);
+            setLoading(false);
           } else {
             console.log("error fetching weather");
             setLoading(false);
@@ -57,38 +57,56 @@ function CardWeather(props) {
     <Container className="my-5 ">
       <Row>
         <Col>
-          <Card>
-            {/* CARD con weather */}
-
+          <Card className="border-0 rounded-pill">
             {/* Se è loading spinner */}
             {loading ? (
-              <Spinner animation="border" role="status">
-                <span className="visually-hidden"></span>
-              </Spinner>
+              <div className="text-center m-3 border-0 rounded-0 ">
+                <Spinner
+                  animation="border"
+                  variant="info"
+                  role="status"
+                  className="fs-4 text-center  "
+                ></Spinner>
+              </div>
             ) : // Senno stampa weather data
             weatherData ? (
               <div>
-                <Card.Body className="bg-info-subtle text-start">
-                  <Card.Title className="bg-primary text-white fs-2 ps-2 p-1 ">
-                    {weatherData.name}
+                <Card.Body className="bg-info-subtle text-start border-0 ">
+                  <Card.Title className=" fs-2 ps-2 p-1 ">
+                    {weatherData.name} , {weatherData.sys.country}
                   </Card.Title>
-                  <Card.Text className="fs-3 text-end me-5">
-                    {weatherData.weather[0].main}{" "}
+                  {
+                    <img
+                      className="bg-info border rounded-pill "
+                      src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@4x.png`}
+                      alt="img"
+                    ></img>
+                  }
+                  <Card.Text className="fs-3 text-end me-5 my-1 fw-bold  ">
+                    {weatherData.weather[0].main.toUpperCase()}{" "}
                   </Card.Text>
-                  <Card.Text className="fs-5 text-end me-5">
-                    {weatherData.weather[0].description}
-                  </Card.Text>
+                  <Row className="flex-column-reverse flex-md-row ">
+                    <Col>
+                      {" "}
+                      <Card.Text className="fs-5 ms-5 my-5">
+                        Temperature {weatherData.main.temp}°C
+                      </Card.Text>
+                    </Col>
+                    <Col>
+                      {" "}
+                      <Card.Text className="fs-5 text-end me-5">
+                        {weatherData.weather[0].description}
+                      </Card.Text>
+                    </Col>
+                  </Row>
 
-                  <Card.Text className="fs-5">
-                    Temperature {weatherData.main.temp}°C
-                  </Card.Text>
-                  <Row className="text-center fs-4">
+                  <Row className="text-center fs-5">
                     <Col xs={6}>
-                      Sunrise <i className="bi bi-sunrise-fill mx-1"></i>
+                      Sunrise <i className="bi bi-sunrise mx-1"></i>
                       {risehours}:{riseminutes}
                     </Col>
                     <Col xs={6}>
-                      Sunset <i className="bi bi-sunset mx-1"></i>
+                      Sunset <i className="bi bi-sunset-fill mx-1"></i>
                       {sethours}:{setminutes}
                     </Col>
                   </Row>
