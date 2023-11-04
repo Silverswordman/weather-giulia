@@ -6,9 +6,9 @@ import SearchWeather from "./Components/SearchWeather";
 
 function App() {
   return (
-    <div className="App h-100 flex-grow-1">
+    <div className="App h-100 d-flex flex-column ">
       <WeatherNav />
-      <SearchWeather />
+      <SearchWeather  />
       <WeatherFooter />
     </div>
   );

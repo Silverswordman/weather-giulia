@@ -40,14 +40,24 @@ function CardWeather(props) {
     }
   }, [props.latandlong]);
 
+  // Funzioni per convertire i time sunrise e sunset da unix a attuali
+  // con controllo del weather data null
+  const UnixSunriseTime = weatherData ? weatherData.sys.sunrise : null;
+  const risedate = UnixSunriseTime ? new Date(UnixSunriseTime * 1000) : null;
+  const risehours = risedate ? risedate.getHours() : null;
+  const riseminutes = risedate ? risedate.getMinutes() : null;
+
+  const UnixSunsetTime = weatherData ? weatherData.sys.sunset : null;
+  const setdate = UnixSunsetTime ? new Date(UnixSunsetTime * 1000) : null;
+  const sethours = setdate ? setdate.getHours() : null;
+  const setminutes = setdate ? setdate.getMinutes() : null;
+  //
+
   return (
-    <Container className="my-5 h-100 flex-grow-1 ">
+    <Container className="my-5 ">
       <Row>
         <Col>
           <Card>
-            {/* INIZIO DROP */}
-
-            {/* DROPDOWN PER LA SCELTA CORDINATE */}
             {/* CARD con weather */}
 
             {/* Se è loading spinner */}
@@ -59,16 +69,29 @@ function CardWeather(props) {
             weatherData ? (
               <div>
                 <Card.Body className="bg-info-subtle text-start">
-                  <Card.Title className="bg-primary-subtle fs-3 ">
+                  <Card.Title className="bg-primary text-white fs-2 ps-2 p-1 ">
                     {weatherData.name}
                   </Card.Title>
-                  <Card.Text>
+                  <Card.Text className="fs-3 text-end me-5">
                     {weatherData.weather[0].main}{" "}
+                  </Card.Text>
+                  <Card.Text className="fs-5 text-end me-5">
                     {weatherData.weather[0].description}
                   </Card.Text>
 
-                  <Card.Text>{weatherData.main.temp}</Card.Text>
-                  <Card.Text>{weatherData.main.temp}</Card.Text>
+                  <Card.Text className="fs-5">
+                    Temperature {weatherData.main.temp}°C
+                  </Card.Text>
+                  <Row className="text-center fs-4">
+                    <Col xs={6}>
+                      Sunrise <i className="bi bi-sunrise-fill mx-1"></i>
+                      {risehours}:{riseminutes}
+                    </Col>
+                    <Col xs={6}>
+                      Sunset <i className="bi bi-sunset mx-1"></i>
+                      {sethours}:{setminutes}
+                    </Col>
+                  </Row>
                 </Card.Body>
               </div>
             ) : null}

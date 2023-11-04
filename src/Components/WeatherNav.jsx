@@ -9,17 +9,20 @@ function WeatherNav() {
   const currentMonth = format(currentDate, "LLLL");
 
   return (
-    <Navbar expand="lg" className="bg-info-subtle x ">
-      <Container fluid>
-        <Navbar.Brand href="/" className="fw-bold">
+    <Navbar expand="lg" className="bg-info-subtle  ">
+      <Container className="p-0">
+        <Navbar.Brand href="/" className="fw-bold me-5 btn border-0 p-0">
           <i className="bi bi-cloud-sun fs-1"> </i> Weather Info
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav " />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <div className="fs-5 text-center">
-            Today is {currentDay} of {currentMonth}{" "}
+        <Nav.Link>
+          {" "}
+          <div className="fs-5  fst-italic  ms-5 ">
+            Today is {currentDay} of {currentMonth} - check the weather anywhere
+            you want !
           </div>
-        </Navbar.Collapse>
+        </Nav.Link>
+        {/* <Navbar.Toggle aria-controls="basic-navbar-nav " />
+        <Navbar.Collapse></Navbar.Collapse> */}
       </Container>
     </Navbar>
   );
