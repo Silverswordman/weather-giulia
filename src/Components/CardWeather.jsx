@@ -75,14 +75,14 @@ function CardWeather(props) {
                   <Card.Title className=" fs-2 ps-2 p-1 ">
                     {weatherData.name} , {weatherData.sys.country}
                   </Card.Title>
-                  {
+                  <div className="d-flex justify-content-center justify-content-md-start ms-md-4">
                     <img
-                      className="bg-info border rounded-pill "
+                      className=" bg-info border rounded-pill mb-2 mt-3 "
                       src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@4x.png`}
                       alt="img"
                     ></img>
-                  }
-                  <Card.Text className="fs-3 text-end me-5 my-1 fw-bold  ">
+                  </div>
+                  <Card.Text className="fs-3 text-center text-md-end me-md-5 my-1 fw-bold  ">
                     {weatherData.weather[0].main.toUpperCase()}{" "}
                   </Card.Text>
                   <Row className="flex-column-reverse flex-md-row ">
@@ -103,7 +103,7 @@ function CardWeather(props) {
                     </Col>
                     <Col>
                       {" "}
-                      <Card.Text className="fs-5 text-end me-5">
+                      <Card.Text className="fs-5 text-center text-md-end me-md-5">
                         {weatherData.weather[0].description}
                       </Card.Text>
                     </Col>

@@ -5,13 +5,8 @@ function WeatherFooter() {
   const currentDate = new Date();
   const currentYear = format(currentDate, "yyyy");
 
-  
-
   return (
-    <Card className="text-center mt-5 bg-info-subtle ">
-      <Card.Body>
-        <Card.Text className="small"></Card.Text>
-      </Card.Body>
+    <Card className="text-center  bg-info-subtle ">
       <Card.Footer className="text-muted small fst-italic">
         © Silvestrini Giulia for Epicode {currentYear}
       </Card.Footer>
