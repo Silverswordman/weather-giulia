@@ -90,6 +90,15 @@ function CardWeather(props) {
                       {" "}
                       <Card.Text className="fs-5 ms-5 my-5">
                         Temperature {weatherData.main.temp}°C
+                        <Card.Text className="fs-6 text-secondary m-0">
+                          Max Temp. {weatherData.main.temp_max} °C
+                        </Card.Text>
+                        <Card.Text className="fs-6 text-secondary m-0">
+                          Min Temp. {weatherData.main.temp_min} °C
+                        </Card.Text>
+                        <Card.Text className="fs-6 text-secondary m-0">
+                          Real Feel Temp {weatherData.main.feels_like} °C
+                        </Card.Text>
                       </Card.Text>
                     </Col>
                     <Col>
@@ -101,11 +110,11 @@ function CardWeather(props) {
                   </Row>
 
                   <Row className="text-center fs-5">
-                    <Col xs={6}>
+                    <Col xs={12} sm={6}>
                       Sunrise <i className="bi bi-sunrise mx-1"></i>
                       {risehours}:{riseminutes}
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={12} sm={6}>
                       Sunset <i className="bi bi-sunset-fill mx-1"></i>
                       {sethours}:{setminutes}
                     </Col>
