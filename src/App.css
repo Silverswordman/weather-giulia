@@ -46,4 +46,11 @@
 
 .App .card-body {
   border-radius: 2.5em;
+  -webkit-box-shadow: 10px 7px 15px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 10px 7px 15px 0px rgba(0, 0, 0, 0.5);
+}
+
+.App .rounded-pill {
+  -webkit-box-shadow: 10px 7px 15px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 10px 7px 15px 0px rgba(0, 0, 0, 0.3);
 }
