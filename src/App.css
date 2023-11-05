@@ -4,7 +4,6 @@
 .App {
   text-align: center;
   font-family: "Roboto Slab", serif;
-  
 }
 
 .App-logo {
@@ -32,7 +31,9 @@
 .App-link {
   color: #61dafb;
 }
-.App div {color: #282c34;}
+.App div {
+  color: #282c34;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -41,4 +42,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App .card-body {
+  border-radius: 2em;
 }
