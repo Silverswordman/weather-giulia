@@ -45,35 +45,37 @@ function WeatherForecast(props) {
           </div>
         ) : weatherForecast ? (
           <Container>
-            <Card>
+             <Card className="border-0 rounded-pill">
               <Card.Title>
                 {weatherForecast.city.name}, {weatherForecast.city.country}
               </Card.Title>
-                             
-                <Container>
-                  <Row>
+
+              <Card className="overflow-scroll-y">
+                <Row className=" justify-content-center row-cols-5">
                   {weatherForecast.list && weatherForecast.list.length > 0 ? (
-                   
                     weatherForecast.list.map((weather, index) => (
-                      <Card className="col-4 " key={index}>
+                      
+                      <Col className="bg-info-subtle h-100 m-1 " key={index}>
                         <Row>
-                          <Col>
-                            <Card.Text>{weather.dt_txt}</Card.Text>
-                          </Col>
-                          <Col>
-                            <Card.Text>
-                              {weather.weather[0].description}
-                            </Card.Text>
-                          </Col>
+                          <Card.Text>{weather.dt_txt.slice(2,-3)}</Card.Text>
+
+                          <Card.Text>
+                            {weather.weather[0].description}
+                            <Card.Img 
+                      className="w-25 bg-info border rounded-pill mb-2 mt-3 "
+                      src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`}
+                      alt="img"
+                    ></Card.Img>
+                          </Card.Text>
+                        
                         </Row>
-                      </Card>
+                      </Col>
                     ))
-                    ) : (
+                  ) : (
                     <p>No forecast available</p>
                   )}
-                  </Row>
-                </Container>
-             
+                </Row>
+              </Card>
             </Card>
           </Container>
         ) : null}
