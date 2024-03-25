@@ -14,7 +14,7 @@ function SearchWeather() {
         if (searchValue.trim() !== "") {
           // Verifica che searchValue non sia una stringa vuota
           let resp = await fetch(
-            `http://api.openweathermap.org/geo/1.0/direct?q=${searchValue}&limit=5&appid=eb3c347d3ab6bb2e69d3791773211185`
+            `https://api.openweathermap.org/geo/1.0/direct?q=${searchValue}&limit=5&appid=eb3c347d3ab6bb2e69d3791773211185`
           );
           if (resp.ok) {
             let data = await resp.json();

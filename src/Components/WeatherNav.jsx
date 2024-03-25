@@ -21,8 +21,7 @@ function WeatherNav() {
             you want !
           </div>
         </Nav.Link>
-        {/* <Navbar.Toggle aria-controls="basic-navbar-nav " />
-        <Navbar.Collapse></Navbar.Collapse> */}
+     
       </Container>
     </Navbar>
   );
