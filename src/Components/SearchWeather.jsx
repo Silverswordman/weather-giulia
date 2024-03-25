@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import CardWeather from "./CardWeather";
 import { useEffect } from "react";
 import { useState } from "react";
+import WeatherForecast from "./WeatherForecast";
 function SearchWeather() {
   const [searchData, setWeatherData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
@@ -50,8 +51,12 @@ function SearchWeather() {
       <Row className="justify-content-center">
         <Col lg={8}>
           {searchData.length > 0 && <CardWeather latandlong={searchData[0]} />}
+
         </Col>
+
       </Row>
+      <Row>          {searchData.length > 0 && <WeatherForecast latandlong={searchData[0]} />}
+</Row>
     </Container>
   );
 }

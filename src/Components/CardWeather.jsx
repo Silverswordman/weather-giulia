@@ -21,7 +21,7 @@ function CardWeather(props) {
           );
           if (resp.ok) {
             let data = await resp.json();
-            console.log(data);
+            // console.log(data);
             setWeather(data);
             setLoading(false);
           } else {
