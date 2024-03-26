@@ -16,24 +16,29 @@ function CardWeather(props) {
       try {
         if (props.latandlong) {
           setLoading(true);
-          let resp = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${props.latandlong.lat}&lon=${props.latandlong.lon}&appid=eb3c347d3ab6bb2e69d3791773211185&units=metric`
-          );
-          if (resp.ok) {
-            let data = await resp.json();
-            // console.log(data);
-            setWeather(data);
-            setLoading(false);
-          } else {
-            console.log("error fetching weather");
-            setLoading(false);
-          }
+          setTimeout(async () => {
+            let resp = await fetch(
+              `https://api.openweathermap.org/data/2.5/weather?lat=${props.latandlong.lat}&lon=${props.latandlong.lon}&appid=eb3c347d3ab6bb2e69d3791773211185&units=metric`
+            );
+            if (resp.ok) {
+              let data = await resp.json();
+              setWeather(data);
+              setLoading(false);
+            } else {
+              console.log("error fetching weather");
+              setLoading(false);
+            }
+          }, 1000); 
+        } else {
+          console.log("No latitude and longitude provided.");
+          setLoading(false);
         }
       } catch (error) {
         console.log(error);
         setLoading(false);
       }
     };
+
     if (props.latandlong) {
       fetchWeather();
     }
