@@ -9,7 +9,7 @@ function WeatherNav() {
   const currentMonth = format(currentDate, "LLLL");
 
   return (
-    <Navbar expand="lg" className="bg-info-subtle  sticky-top">
+    <Navbar expand="lg" className="bg-info-subtle  sticky-top border-bottom  border-3 border-white">
       <Container className="p-0">
         <Navbar.Brand href="/" className="fw-bold me-5 btn border-0 p-0">
           <i className="bi bi-cloud-sun fs-1"> </i> Weather Info
